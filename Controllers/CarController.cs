@@ -1,5 +1,8 @@
 ﻿using AspNetCoreCarItem.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using AspNetCoreCarDB.Models;
+
 
 namespace AspNetCoreCarDB.Controllers
 {
@@ -11,13 +14,19 @@ namespace AspNetCoreCarDB.Controllers
             _carItemService = carItemService;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return new ActionResult();
+        public async Task<IActionResult> Index()
+        {
+            var items = await _carItemService.GetIncompleteItemsAsync(); // Page 37 - Get Car(s) from the DB
+         
+            var model = new CarViewModel()
+            {
+                Items = items
+            };
+            return View(model);
+        }
 
-        //    // Get Car(s) from the DB
-        //    // Put Car(s) into a model
-        //    // Render view using the model
-        //}
+        // Put Car(s) into a model
+        // Render view using the model
     }
 }
+
