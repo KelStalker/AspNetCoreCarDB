@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Manage the list of cars you own or want to acquire";
 }
-<div class="panel panel-default todo-panel">
+<div class="panel panel-default cars-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
     <table class="table table-hover">
         <thead>
@@ -10,17 +10,21 @@
                 <td>&#x2714;</td>
                 <td>CarModel</td>
                 <td>CarMake</td>
+                <td>CarYear</td>
+
             </tr>
         </thead>
-        @foreach (var item in Model.CarItem)
+        @foreach (var item in Model.Items)
         {
-            <tr>
-                <td>
-                    <input type="checkbox" class="OwnsCar-checkbox">
-                </td>
-                <td>@item.CarModel</td>
-                <td>@item.CarMake</td>
-            </tr>
+    <tr>
+        <td>
+            <input type="checkbox" class="OwnsCar-checkbox">
+        </td>
+        <!--A check indicates the user owns the car, if not, he still needs to purchase it-->
+        <td>@item.CarModel</td>
+        <td>@item.CarMake</td>
+        <td>@item.CarYear</td>
+    </tr>
         }
     </table>
     <div class="panel-footer add-item-form">

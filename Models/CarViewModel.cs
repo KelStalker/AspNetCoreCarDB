@@ -7,7 +7,7 @@ namespace AspNetCoreCarDB.Models
 {
     public class CarViewModel
     {
-        public CarItem[] Items { get : set; }
+        public CarItem[] Items { get; set; }
     }
 }
 
